@@ -42,7 +42,7 @@ Most modern LLMs are based on the Transformer architecture. A Transformer takes 
 
 The original Transformer paper, *Attention Is All You Need*, introduced an architecture based on attention mechanisms rather than recurrence or convolution. While the original paper proposed an encoder-decoder structure, GPT-style LLMs are usually decoder-only Transformers. The core idea is still similar: the model repeatedly updates token representations using attention and neural network layers.
 
-![Transformer architecture](./transformer_architecture.png)
+![Transformer architecture](/assets/img/posts/prompt-injection/transformer_architecture.png)
 
 **Figure 1. Transformer architecture.** A Transformer converts input tokens into embeddings, processes them through repeated attention and feed-forward layers, and produces output probabilities for the next token.
 
