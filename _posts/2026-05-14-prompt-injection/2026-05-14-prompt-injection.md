@@ -3,9 +3,6 @@ title: "Why Prompt Injection Happens, and Why It Is Hard to Fully Prevent"
 date: 2026-05-14
 categories: [AI Security]
 tags: [prompt injection, LLM, transformer, RAG, agentic AI]
-image:
-  path: /assets/img/posts/prompt-injection/transformer_architecture.png
-  alt: Transformer architecture diagram
 ---
 
 # Why Prompt Injection Happens, and Why It Is Hard to Fully Prevent
