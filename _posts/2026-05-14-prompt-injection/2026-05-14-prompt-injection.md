@@ -3,6 +3,7 @@ title: "Why Prompt Injection Happens, and Why It Is Hard to Fully Prevent"
 date: 2026-05-14
 categories: [AI Security]
 tags: [prompt injection, LLM, transformer, RAG, agentic AI]
+mermaid: true
 ---
 
 # Why Prompt Injection Happens, and Why It Is Hard to Fully Prevent
@@ -41,7 +42,7 @@ Most modern LLMs are based on the Transformer architecture. A Transformer takes 
 
 The original Transformer paper, *Attention Is All You Need*, introduced an architecture based on attention mechanisms rather than recurrence or convolution. While the original paper proposed an encoder-decoder structure, GPT-style LLMs are usually decoder-only Transformers. The core idea is still similar: the model repeatedly updates token representations using attention and neural network layers.
 
-![Transformer architecture](/assets/img/posts/prompt-injection/transformer_architecture.png)
+![Transformer architecture](./transformer_architecture.png)
 
 **Figure 1. Transformer architecture.** A Transformer converts input tokens into embeddings, processes them through repeated attention and feed-forward layers, and produces output probabilities for the next token.
 
@@ -66,14 +67,7 @@ Humans can easily say that the first part is a trusted system instruction, the s
 
 The key mechanism here is **self-attention**. In self-attention, each token can attend to other tokens in the context and update its representation based on them. When the model generates an answer, the hidden state used for prediction may depend on tokens from the system prompt, user query, retrieved documents, tool outputs, and other context.
 
-```mermaid
-flowchart LR
-    A[System instruction tokens] --> D[Shared Transformer context]
-    B[User query tokens] --> D
-    C[Untrusted document tokens] --> D
-    D --> E[Self-attention layers]
-    E --> F[Next-token prediction]
-```
+![How prompt injection enters the model context](/assets/img/posts/prompt-injection/d1_shared_transformer_context.png)
 
 This is why prompt injection is possible. Malicious instructions inside an external document are not isolated from the model’s reasoning process. They are part of the same context and can influence the representation used to generate the answer or decide an action.
 
@@ -186,17 +180,7 @@ The model cannot process the document meaningfully without using the instruction
 
 So the goal is not complete separation. The goal is **controlled interaction**.
 
-```mermaid
-flowchart TB
-    I[Instruction channel<br/>What should I do?]
-    D[Data channel<br/>What content should I process?]
-    R[Controlled interaction<br/>Use instruction to interpret data]
-    O[Answer or action]
-
-    I --> R
-    D --> R
-    R --> O
-```
+![Channel separation and controlled interaction](/assets/img/posts/prompt-injection/d2_controlled_interaction.png)
 
 The system should allow trusted instructions to guide how data is interpreted, but it should prevent untrusted data from becoming new instructions that control the model’s behavior.
 
@@ -231,14 +215,7 @@ The real design goal is therefore:
 
 This is the central trade-off.
 
-```mermaid
-flowchart LR
-    A[Trusted instruction] --> C[Controlled reasoning boundary]
-    B[Untrusted data] --> C
-    C --> D[Answer generation]
-    C --> E[Policy and tool checks]
-    E --> F[Safe action or refusal]
-```
+![Structured separation plus controlled interaction](/assets/img/posts/prompt-injection/d3_structured_separation.png)
 
 The right direction is not pure separation. It is **structured separation plus controlled interaction**.
 
@@ -264,21 +241,7 @@ But traditional injection attacks often have clearer technical mitigations. In S
 
 With LLMs, the situation is harder because both the instruction and the data are natural language. The model is designed to interpret natural language instructions. That means the boundary between “text to follow” and “text to analyze” is inherently ambiguous.
 
-```mermaid
-flowchart TB
-    subgraph Traditional Software
-        A1[Code section] --> A2[Execution]
-        B1[User data] --> B2[Data processing]
-        B1 -. unsafe concatenation .-> A2
-    end
-
-    subgraph LLM Application
-        C1[System instruction] --> C4[Single model context]
-        C2[User query] --> C4
-        C3[External data] --> C4
-        C4 --> C5[Generation or tool use]
-    end
-```
+![Traditional software vs LLM application](/assets/img/posts/prompt-injection/d4_vs.png)
 
 This does not mean prompt injection is unrelated to older injection attacks. It means prompt injection is the LLM-specific version of a very old security problem:
 
@@ -345,9 +308,7 @@ This improves robustness but does not provide a formal security guarantee. The m
 
 Many practical systems use filters before and after the model.
 
-```text
-Input filter → LLM → Output filter → Tool policy checker
-```
+![Guardrails and detection pipeline](/assets/img/posts/prompt-injection/d5_guardrail.png)
 
 These systems may detect phrases like:
 
