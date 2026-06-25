@@ -22,25 +22,9 @@ This is a defensive measurement. Every attack targets a harmless, random **canar
 
 The scenario is a **confused deputy**. The user is benign; they just want the repo cloned and run. The attacker is the *content* of the untrusted input. The agent runs with the user's authority — its file access, its environment — and an injection turns that borrowed authority against the user. The point worth internalizing is that a better-behaved model does not fix this: the agent isn't malicious, it's *tricked*, and it's tricked while holding too much authority over untrusted input. So the defense can't be "trust the agent." It has to be "contain the agent."
 
-```mermaid
-flowchart LR
-    U[Benign user] -->|"clone & run this repo"| A[Agent: confused deputy]
-    R[(Untrusted repo<br/>+ injected code)] -.->|hijacks| A
-    A --> S["Sandbox executor<br/>L0 Naive → L1 Path → L2 Docker → L3 Hardened"]
-    S --> W[Workspace<br/>read/write allowed here]
+![Threat model: benign user, untrusted repo, and the workspace boundary the sandbox must hold](/assets/img/posts/sandbox-escape/threat_model.png)
 
-    subgraph OUT [Protected assets — outside the workspace]
-        C1[(file canary<br/>≈ ~/.ssh, AWS keys)]
-        C2[(env canary<br/>≈ SECRET_TOKEN)]
-        C3[(rc canary<br/>≈ ~/.bashrc)]
-    end
-
-    W -. "A1/A4 links, A2 traversal" .-> C1
-    W -. "A3 /proc" .-> C2
-    W -. "A5 append" .-> C3
-```
-
-I deliberately **start the clock after the injection has already succeeded**. I am not measuring how well anything prevents injection — that was the last two posts, and the honest answer is "imperfectly." I assume code execution inside the sandbox as a *given* and measure only the blast radius. This is the assume-breach posture, and it's what isolates the variable I actually care about: the isolation layer, not the model or the prompt.
+I deliberately **start the clock after the injection has already succeeded**. I am not measuring how well anything prevents injection — that is the prompt-injection track's question, and the honest answer is "imperfectly." I assume code execution inside the sandbox as a *given* and measure only the blast radius. This is the assume-breach posture, and it's what isolates the variable I actually care about: the isolation layer, not the model or the prompt.
 
 Two things are explicitly **out of scope**: kernel and hypervisor exploits (that is the job of a different layer — gVisor, Firecracker, the VM boundary), and the network boundary (its own post, later in this series). Drawing that line is not laziness; it is what makes each result interpretable. A threat model that claims to stop everything explains nothing.
 
