@@ -1,11 +1,9 @@
 ---
 title: "What LoRA Fixed, What It Broke: Fine-Tuning a Prompt-Injection Detector Against Camouflaged Attacks"
 date: 2026-07-18
-categories: [AI Security, Prompt Injection]
+categories: [AI Security, Blue Team, Prompt Injection]
 tags: [prompt injection, LoRA, fine-tuning, QLoRA, detection, catastrophic forgetting, LLM]
 ---
-
-# What LoRA Fixed, What It Broke: Fine-Tuning a Prompt-Injection Detector Against Camouflaged Attacks
 
 **TL;DR.** Few-shot injection detectors catch overt attacks but miss ones camouflaged in a document's own vocabulary. I fine-tuned Llama 3.1 8B with QLoRA to close that gap. Camouflage detection improved, but static detection dropped: a catastrophic-forgetting trade-off. A four-way hyperparameter sweep failed to remove it, and I argue it structurally cannot, because plain SFT has no term that preserves existing capabilities. An OR-ensemble of the few-shot and fine-tuned detectors routes around the problem entirely.
 

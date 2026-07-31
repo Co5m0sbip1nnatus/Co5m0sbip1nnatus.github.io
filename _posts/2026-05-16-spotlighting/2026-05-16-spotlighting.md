@@ -1,7 +1,7 @@
 ---
 title: "Implementing and Breaking Spotlighting: Can Prompt-Level Separation Defend Against Indirect Prompt Injection?"
 date: 2026-05-16
-categories: [AI Security, Prompt Injection]
+categories: [AI Security, Blue Team, Prompt Injection]
 tags: [prompt injection, LLM, spotlighting, defense evaluation, red team]
 ---
 

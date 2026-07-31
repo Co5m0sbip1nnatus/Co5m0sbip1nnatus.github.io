@@ -1,7 +1,7 @@
 ---
 title: "How Two Frontier Coding Agents Sandbox Untrusted Code"
 date: 2026-07-04
-categories: [AI Security, Sandbox]
+categories: [AI Security, Blue Team, Sandbox]
 tags: [sandbox, LLM agents, isolation, seccomp, bubblewrap, teardown]
 ---
 

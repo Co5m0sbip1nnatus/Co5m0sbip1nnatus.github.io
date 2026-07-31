@@ -1,7 +1,7 @@
 ---
 title: "Where the Sandbox Breaks: Measuring Filesystem-Boundary Escapes Across Four Isolation Levels"
 date: 2026-06-25
-categories: [AI Security, Sandbox]
+categories: [AI Security, Blue Team, Sandbox]
 tags: [sandbox escape, isolation, prompt injection, containers, defense evaluation, red team]
 mermaid: true
 ---

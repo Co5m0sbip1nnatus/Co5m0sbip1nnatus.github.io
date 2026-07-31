@@ -1,7 +1,7 @@
 ---
 title: "Why Prompt Injection Happens, and Why It Is Hard to Fully Prevent"
 date: 2026-05-14
-categories: [AI Security, Prompt Injection]
+categories: [AI Security, Blue Team, Prompt Injection]
 tags: [prompt injection, LLM, transformer, RAG, agentic AI]
 mermaid: true
 ---
