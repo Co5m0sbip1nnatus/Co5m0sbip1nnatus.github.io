@@ -28,16 +28,13 @@ url: "https://Co5m0sbip1nnatus.github.io"
 github:
   username: Co5m0sbip1nnatus
 
-twitter:
-  username: # [TODO] Twitter 있으면 입력, 없으면 이 줄 삭제
-
 social:
   name: Jihu Hwang
-  email: jeehoohwang@gmail.com# [TODO] 이메일 입력
+  email: jeehoohwang@gmail.com
   fediverse_handle:
   links:
     - https://github.com/Co5m0sbip1nnatus
-    # - https://www.linkedin.com/in/jihu-hwang-492761297  # [TODO] LinkedIn URL 있으면 주석 해제 후 입력
+    - https://www.linkedin.com/in/jihu-hwang-492761297
 
 # Site Verification Settings
 webmaster_verifications:
