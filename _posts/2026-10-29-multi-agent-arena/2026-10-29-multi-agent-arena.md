@@ -114,3 +114,14 @@ Most failed claims were not lies. They were tokens that a rival had deleted, and
 ---
 
 I'm not sure anyone is reading this, but if you are interested, please [send me an email](mailto:jeehoohwang@gmail.com)! Thank you.
+
+## Sources
+
+- [OpenAI–Hugging Face Incident Technical Report (PDF)](https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf)
+- [METR: OpenAI–Hugging Face incident investigation](https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/)
+- [Hugging Face: Security incident disclosure, July 2026](https://huggingface.co/blog/security-incident-july-2026)
+- [Wikipedia: OpenAI–HuggingFace incident](https://en.wikipedia.org/wiki/OpenAI%E2%80%93HuggingFace_incident)
+- [CNBC: OpenAI releases sweeping report on Hugging Face AI agent hack](https://www.cnbc.com/2026/08/26/open-ai-hugging-face-hack.html)
+- [NBC News: OpenAI agents hacked Hugging Face in 700-strong swarm](https://www.nbcnews.com/tech/tech-news/openai-report-says-network-was-hacked-rogue-ai-agents-rcna594590)
+- [Fortune: what the reports say and what they don't](https://fortune.com/2026/08/26/openai-publishes-technical-report-on-how-its-agents-hacked-hugging-face-here-are-the-main-takeaways-and-what-openai-left-out/)
+- [The Register: red-team report on OpenAI's agent monitoring](https://www.theregister.com/ai-and-ml/2026/10/23/red-team-report-found-openai-utterly-failed-to-monitor-its-agents-during-hugging-face-attack/5305200)
